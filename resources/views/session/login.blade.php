@@ -18,6 +18,10 @@
                 </a>
               </div><!-- End Logo -->
 
+              @if(session('messages'))
+                <div style="text-align: center" class="alert alert-success">{{session('messages')}}</div>
+                @endif
+
               <div class="card mb-3">
 
                 <div class="card-body">

@@ -93,6 +93,6 @@ class SessionController extends Controller
 
         $request->session()->regenerateToken();
 
-        return redirect('/')->with('messages', 'silahkan login kembali');
+        return redirect('/')->with('messages', 'Silahkan login kembali.');
     }
 }

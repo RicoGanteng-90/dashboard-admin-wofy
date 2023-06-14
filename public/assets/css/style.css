@@ -1261,3 +1261,10 @@ label {
     position: absolute;
     z-index: -1;
  }
+
+ .row .card .card-body .name{
+    font-size: 25px;
+    color:var(--black);
+    padding:1rem 0;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+ }

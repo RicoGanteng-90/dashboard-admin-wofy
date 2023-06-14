@@ -29,6 +29,7 @@
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
 
+
 </head>
 
 <body>
@@ -477,7 +478,7 @@
       </li><!-- End Contact Page Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="register">
+        <a class="nav-link collapsed" href="/register-show">
           <i class="bi bi-card-list"></i>
           <span>Register</span>
         </a>
@@ -498,9 +499,9 @@
       </li><!-- End Error 404 Page Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="pages-blank.html">
-          <i class="bi bi-file-earmark"></i>
-          <span>Blank</span>
+        <a class="nav-link collapsed" href="{{ route ('product.index')}}">
+          <i class="bi bi-bag"></i>
+          <span>Product</span>
         </a>
       </li><!-- End Blank Page Nav -->
 

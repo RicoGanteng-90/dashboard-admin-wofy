@@ -51,19 +51,19 @@ class ProfileController extends Controller
     public function edit(Request $request)
     {
         if(!Hash::check($request->old_password, auth()->user()->password)){
-            return back()->with('error', 'Old password does not match our record');
+            return back()->with('error', 'Old password does not match our records.');
             dd('old pass does not match');
         }
 
         if($request->new_password != $request->repeat_password){
-            return back()->with('error', 'New password and confirmation password do not match');
+            return back()->with('error', 'New password and confirmation password do not match.');
         }
 
         auth()->user()->update([
             'password' => Hash::make($request->new_password)
         ]);
 
-        return back()->with('status', 'Successfully change your password');
+        return back()->with('status', 'Your password changed.');
     }
 
     /**

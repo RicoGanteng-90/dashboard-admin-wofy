@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SessionController;
 use Illuminate\Contracts\Session\Session;
@@ -32,8 +33,16 @@ Route::get('/register-show', [SessionController::class, 'edit'])->name('session.
 Route::get('/home', [DashboardController::class, 'index'])->name('dashboard.index')->middleware('auth');
 
 //Admin profile session
-Route::get('/profile-index', [ProfileController::class, 'index'])->name('profile.index');
-Route::get('/profile-show', [ProfileController::class, 'show'])->name('profile.show');
+Route::get('/profile-index', [ProfileController::class, 'index'])->name('profile.index')->middleware('auth');;
+Route::get('/profile-show', [ProfileController::class, 'show'])->name('profile.show')->middleware('auth');;
 Route::middleware('auth')->post('/profile-update', [ProfileController::class, 'update'])->name('profile.update');
 Route::middleware('auth')->delete('/profile-delete', [ProfileController::class, 'destroy'])->name('profile.destroy');
 Route::middleware('auth')->post('/password-edit', [ProfileController::class, 'edit'])->name('profile.edit');
+
+//Product session
+Route::get('/product-index', [ProductController::class, 'index'])->name('product.index')->middleware('auth');
+Route::get('/product-show/{id}', [ProductController::class, 'show'])->name('product.show')->middleware('auth');;
+Route::post('/product-add', [ProductController::class, 'store'])->name('product.store')->middleware('auth');
+Route::post('/product-update', [ProductController::class, 'update'])->name('product.update')->middleware('auth');
+Route::delete('/product-delete/{id}', [ProductController::class, 'destroy'])->name('product.destroy');
+
