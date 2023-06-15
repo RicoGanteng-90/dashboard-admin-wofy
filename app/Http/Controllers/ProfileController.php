@@ -142,13 +142,14 @@ class ProfileController extends Controller
     {
         $user = Auth::user();
 
-        if ($request->hasFile('profile_img')) {
-            $myFile = 'profile/'.$user->profile_img;
-            if(File::exists($myFile))
-            {
-                File::delete($myFile);
-            }}
+        if ($user->profile_img) {
+            $oldFilePath = public_path('profile/'.$user->profile_img);
+            if (file_exists($oldFilePath)) {
+                unlink($oldFilePath);
+            }
+            return back()->with('status', 'Gambar dihapus.');
+        }
 
-        return redirect()->route('profile.show')->with('del', 'Data berhasil dihapus');
+        return back()->with('error', 'File tidak ditemukan.');
     }
 }

@@ -57,7 +57,7 @@
         <li class="nav-item dropdown pe-3">
 
           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-            <img src="{{ asset('profile/' . Auth::user()->profile_img) }}" alt="Profile image" class="rounded-circle">
+            <img src="{{ asset('profile/' . Auth::user()->profile_img) }}" alt="{{asset('profile/blank.png')}}" class="rounded-circle" onerror="this.onerror=null; this.src='{{ asset('profile/blank.png') }}'">
             <span class="d-none d-md-block dropdown-toggle ps-2">{{Auth::user()->name}}</span>
           </a><!-- End Profile Iamge Icon -->
 

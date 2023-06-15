@@ -29,7 +29,7 @@
           <div class="card">
             <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
 
-              <img src="{{asset('profile/'.Auth::user()->profile_img)}}" alt="Profile" class="rounded-circle">
+              <img src="{{asset('profile/'.Auth::user()->profile_img)}}" alt="{{asset('profile/blank.png')}}" onerror="this.onerror=null; this.src='{{ asset('profile/blank.png') }}'" class="rounded-circle">
               <h2>{{Auth::user()->name}}</h2>
               <h3>{{Auth::user()->job}}</h3>
               <div class="social-links mt-2">
@@ -109,6 +109,7 @@
                 </div>
 
                 <div class="tab-pane fade profile-edit pt-3" id="profile-edit">
+                    <button type="submit" class="btn btn-danger" name="delete-img" data-bs-toggle="modal" data-bs-target="#imgUpdate"><i class="bi bi-trash"> Hapus gambar</i></button>
 
                   <!-- Profile Edit Form -->
                   <form action="{{route('profile.update')}}" method="POST" enctype="multipart/form-data">
@@ -116,7 +117,7 @@
                     <div class="row mb-3">
                       <label for="profile_img" class="col-md-4 col-lg-3 col-form-label">Profile Image</label>
                       <div class="col-md-8 col-lg-9">
-                        <img src="{{asset('profile/'.Auth::user()->profile_img)}}" alt="Profile">
+                        <img src="{{asset('profile/'.Auth::user()->profile_img)}}" alt="{{asset('profile/blank.png')}}" onerror="this.onerror=null; this.src='{{ asset('profile/blank.png') }}'">
                         <div class="pt-2">
                             <label for="upload-photo"><img src="profile/upload.png" alt=""></label>
                         <input type="file" name="profile_img" id="upload-photo" class="btn btn-primary btn-sm" title="Upload new profile image">
@@ -213,15 +214,34 @@
                     </div>
                   </form><!-- End Profile Edit Form -->
 
+                  <div class="modal" tabindex="-1" id="imgUpdate">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title">Hapus foto profile</h5>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                          <p>Yakin ingin menghapus?</p>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                          <form action="{{route('profile.destroy')}}" method="POST" enctype="multipart/form-data">
+                            @csrf
+                            @method('DELETE')
+                          <button type="submit" class="btn btn-primary">Save changes</button>
+                        </form>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
                 </div>
 
                 <div class="tab-pane fade pt-3" id="profile-change-password">
                   <!-- Change Password Form -->
                   <form action="password-edit" method="POST" enctype="multipart/form-data">
                     @csrf
-
-
-
                     <div class="row mb-3">
                       <label for="oldPassword" class="col-md-4 col-lg-3 col-form-label">Current Password</label>
                       <div class="col-md-8 col-lg-9">
