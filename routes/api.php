@@ -3,13 +3,13 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\Api\LoginController;
+use App\Http\Controllers\Api\LoginApiController;
 use App\Http\Controllers\Api\OrderAPIController;
-use App\Http\Controllers\MessageAPIController;
+use App\Http\Controllers\Api\MessageAPIController;
 use App\Http\Controllers\Api\ProductAPIController;
-use App\Http\Controllers\CustomerAPIController;
-use App\Http\Controllers\SearchController;
-use App\Http\Controllers\CartController;
+use App\Http\Controllers\Api\CustomerAPIController;
+use App\Http\Controllers\Api\SearchApiController;
+use App\Http\Controllers\Api\CartController;
 
 
 /*
@@ -28,9 +28,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 //Authenticating
-Route::post('/login', [LoginController::class, 'login']);
-Route::post('/register', [LoginController::class, 'register']);
-Route::post('/logout', [LoginController::class, 'logout']);
+Route::post('/login', [LoginApiController::class, 'login']);
+Route::post('/register', [LoginApiController::class, 'register']);
+Route::post('/logout', [LoginApiController::class, 'logout']);
 
 //Products (Mungkin tidak semuanya terpakai/menyesuaikan)
 Route::get('/products', [ProductAPIController::class, 'index']);
@@ -38,7 +38,7 @@ Route::post('/products-add', [ProductAPIController::class, 'store']);
 Route::get('/products/{id}', [ProductAPIController::class, 'show']);
 
 //Search
-Route::post('/search', [SearchController::class, 'search']);
+Route::get('/search/{name}', [SearchApiController::class, 'search']);
 
 //Orders (Mungkin tidak semuanya terpakai/menyesuaikan)
 Route::get('/orders', [OrderAPIController::class, 'index']);
