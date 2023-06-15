@@ -53,14 +53,15 @@ class ProductController extends Controller
 
 
     public function update(Request $request, $id) {
-        $request -> validate([
+        $validatedData = $request -> validate([
             'name' => 'nullable|string|max:100',
             'category' => 'nullable|string|max:100',
             'keterangan' => 'nullable|string|max:100',
             'price' => 'nullable|string|max:100',
-            'image' => 'nullable|string|max:2048',
+            'image' => 'nullable|image',
         ]);
 
+        if ($validatedData){
         $product = Product::findOrFail($id);
 
         if ($request->has('name')) {
@@ -68,31 +69,35 @@ class ProductController extends Controller
             }
 
             if ($request->has('category')) {
-            $product->category = $request->input('email');
+            $product->category = $request->input('category');
             }
 
             if ($request->has('keterangan')) {
-            $product->keterangan = $request->input('about');
+            $product->keterangan = $request->input('keterangan');
             }
 
             if ($request->has('price')) {
-            $product->price = $request->input('company');
+            $product->price = $request->input('price');
             }
 
-            if ($request->hasFile('product')) {
+            if ($request->hasFile('image')) {
                 $myFile = 'product/'.$product->image;
                 if(File::exists($myFile))
                 {
                     File::delete($myFile);
                 }
 
-                $request->file('image')->move('product/', $request->file('image')->getClientOriginalName());
+                $request->file('image')->move(public_path('product/'), $request->file('image')->getClientOriginalName());
                 $product->image=$request->file('image')->getClientOriginalName();
             }
 
                 $product->save();
 
-                return redirect()->route('product.index')->with('success', 'Product updated successfully.');
+                return back()->with('success', 'Product updated.');
+        }else{
+            return back()->withErrors(['error'=>'Failed to update.']);
+        }
+
     }
 
     public function destroy(Request $request, $id) {

@@ -9,7 +9,7 @@
       <h1>Dashboard</h1>
       <nav>
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+          <li class="breadcrumb-item"><a href="/home">Home</a></li>
           <li class="breadcrumb-item active">Dashboard</li>
         </ol>
       </nav>
@@ -119,7 +119,7 @@
                         <i class="bi bi-currency-dollar"></i>
                       </div>
                       <div class="ps-3">
-                        <h6>Rp. {{number_format($notlunassum,2,',','.')}}</h6>
+                        <h6>Rp. {{number_format($lunassum,2,',','.')}}</h6>
 
                       </div>
                     </div>
@@ -154,7 +154,7 @@
                         <i class="bi bi-coin"></i>
                       </div>
                       <div class="ps-3">
-                        <h6>Rp. {{number_format($lunassum,2,',','.')}}</h6>
+                        <h6>Rp. {{number_format($notlunassum,2,',','.')}}</h6>
 
                       </div>
                     </div>
@@ -225,7 +225,7 @@
 
                     <div class="d-flex align-items-center">
                       <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                        <i class="bi-person-check-fill"></i>
+                        <i class="bi bi-person-check-fill"></i>
                       </div>
                       <div class="ps-3">
                         <h6>{{$lunascount}}</h6>
@@ -336,7 +336,7 @@
 
                 <div class="d-flex align-items-center">
                   <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                    <i class="bi bi-person-fill-lock"></i>
+                    <i class="bi bi-person-badge"></i>
                   </div>
                   <div class="ps-3">
                     <h6>{{$admincount}}</h6>
