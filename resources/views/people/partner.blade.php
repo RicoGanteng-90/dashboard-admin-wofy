@@ -1,18 +1,18 @@
 @extends('main-layout.layout')
 
-@section('title', 'Karyawan')
+@section('title', 'Partner')
 
 @section('content')
 
 <main id="main" class="main">
 
     <div class="pagetitle">
-      <h1>Karyawan</h1>
+      <h1>Partner</h1>
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="/home">Home</a></li>
           <li class="breadcrumb-item">Tables</li>
-          <li class="breadcrumb-item active">Karyawan</li>
+          <li class="breadcrumb-item active">Partner</li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
@@ -23,7 +23,7 @@
 
             <div class="card">
               <div class="card-body">
-                <h5 class="card-title">Karyawan</h5>
+                <h5 class="card-title">Partner</h5>
 
                     <b>
                         @if(session('success'))
@@ -36,7 +36,7 @@
                     </b>
 
                         <!-- Vertical Form -->
-                        <form class="row g-3" action="{{route('employee.store')}}" method="POST" enctype="multipart/form-data">
+                        <form class="row g-3" action="{{route('partner.store')}}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="col-8">
                             <label for="name" class="form-label">Name</label>
@@ -51,10 +51,12 @@
                                 <input name="number" type="text" class="form-control" id="number">
                             </div>
                             <div class="col-6">
-                                <label for="position" class="form-label">Position</label>
-                                <input name="position" type="text" class="form-control" id="position">
+                                <div class="form-floating">
+                                <textarea name="keterangan" class="form-control" placeholder="keterangan" id="keterangan" style="height: 100px;"></textarea>
+                                <label for="keterangan">Keterangan</label>
+                                </div>
                             </div>
-                            <div class="col-12">
+                            <div class="col-6">
                                 <div class="form-floating">
                                 <textarea name="address" class="form-control" placeholder="address" id="address" style="height: 100px;"></textarea>
                                 <label for="address">Address</label>
@@ -74,75 +76,75 @@
                                 <th scope="col">Name</th>
                                 <th scope="col">Email</th>
                                 <th scope="col">Phone</th>
-                                <th scope="col">Position</th>
+                                <th scope="col">Deskripsi</th>
                                 <th scope="col">Address</th>
                                 <th scope="col">Action</th>
                             </tr>
                             </thead>
                             <tbody>
-                                @foreach($employee as $emp)
+                                @foreach($partner as $part)
                             <tr>
-                                <th scope="row">{{$emp->id}}</th>
-                                <td>{{$emp->name}}</td>
-                                <td>{{$emp->email}}</td>
-                                <td>{{$emp->number}}</td>
-                                <td>{{$emp->position}}</td>
-                                <td>{{$emp->address}}</td>
+                                <th scope="row">{{$part->id}}</th>
+                                <td>{{$part->name}}</td>
+                                <td>{{$part->email}}</td>
+                                <td>{{$part->number}}</td>
+                                <td>{{$part->keterangan}}</td>
+                                <td>{{$part->address}}</td>
                                 <td>
-                                    <form id="delete-karyawan-{{$emp->id}}" action="/employee-delete/{{$emp->id}}" method="POST" enctype="multipart/form-data">
+                                    <form id="delete-partner-{{$part->id}}" action="/partner-delete/{{$part->id}}" method="POST" enctype="multipart/form-data">
                                         @csrf
                                         @method('DELETE')
                                     </form>
-                                    <button type="submit" class="btn btn-danger rounded-pill" onclick="event.preventDefault(); confirmDelete({{$emp->id}});"><i class="bi bi-trash"> Delete</i></button>
+                                    <button type="submit" class="btn btn-danger rounded-pill" onclick="event.preventDefault(); confirmDelete({{$part->id}});"><i class="bi bi-trash"> Delete</i></button>
                                     <script>
                                         function confirmDelete(id) {
                                             if (confirm('Delete this account?')) {
-                                                document.getElementById('delete-karyawan-' + id).submit();
+                                                document.getElementById('delete-partner-' + id).submit();
                                             }
                                         }
                                             </script>
 
-                                    <button type="submit" class="btn btn-primary rounded-pill" data-bs-toggle="modal" data-bs-target="#karyawanUpdate{{$emp->id}}"><i class="bi bi-pencil"> Update</i></button>
+                                    <button type="submit" class="btn btn-primary rounded-pill" data-bs-toggle="modal" data-bs-target="#partnerUpdate{{$part->id}}"><i class="bi bi-pencil"> Update</i></button>
                                 </td>
                             </tr>
 
                                 <!--Update admin modal start-->
-                                <div class="modal fade" id="karyawanUpdate{{$emp->id}}" tabindex="-1">
+                                <div class="modal fade" id="partnerUpdate{{$part->id}}" tabindex="-1">
                                     <div class="modal-dialog modal-lg">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                        <h5 class="modal-title">Update karyawan</h5>
+                                        <h5 class="modal-title">Update partner</h5>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body" style="min-height: 330px;">
                                         <div class="col-12">
-                                            <form class="row g-3" id="update-karyawan-{{$emp->id}}" action="/employee-update/{{$emp->id}}" enctype="multipart/form-data" method="POST">
+                                            <form class="row g-3" id="update-partner-{{$part->id}}" action="/partner-update/{{$part->id}}" enctype="multipart/form-data" method="POST">
                                                 @csrf
                                                 <div class="col-6">
                                                     <label for="name" class="form-label">Name</label>
-                                                    <input name="name" type="text" class="form-control" id="name" value="{{$emp->name}}">
+                                                    <input name="name" type="text" class="form-control" id="name" value="{{$part->name}}">
                                                 </div>
                                                 <div class="col-6">
                                                     <label for="email" class="form-label">Email</label>
-                                                    <input name="email" type="text" class="form-control" id="email" value="{{$emp->email}}">
+                                                    <input name="email" type="text" class="form-control" id="email" value="{{$part->email}}">
                                                 </div>
                                                 <div class="col-12">
                                                     <label for="number" class="form-label">Phone</label>
-                                                    <input name="number" type="text" class="form-control" id="number" value="{{$emp->number}}">
+                                                    <input name="number" type="text" class="form-control" id="number" value="{{$part->number}}">
                                                 </div>
                                                 <div class="col-12">
-                                                    <label for="position" class="form-label">Position</label>
-                                                    <input name="position" type="text" class="form-control" id="position" value="{{$emp->position}}">
+                                                    <label for="keterangan" class="form-label">Deskripsi</label>
+                                                    <input name="keterangan" type="text" class="form-control" id="keterangan" value="{{$part->keterangan}}">
                                                 </div>
                                                 <div class="col-12">
                                                     <label for="address" class="form-label">Address</label>
-                                                    <input name="address" type="text" class="form-control" id="address" value="{{$emp->address}}">
+                                                    <input name="address" type="text" class="form-control" id="address" value="{{$part->address}}">
                                                 </div>
                                         </div>
                                         </div>
                                         <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                        <button type="button" class="btn btn-primary" onclick="event.preventDefault(); document.getElementById('update-karyawan-{{$emp->id}}').submit();">Save changes</button>
+                                        <button type="button" class="btn btn-primary" onclick="event.preventDefault(); document.getElementById('update-partner-{{$part->id}}').submit();">Save changes</button>
                                         </div>
                                     </form>
                                     </div>

@@ -33,7 +33,7 @@
             @method('DELETE')
           <div class="card">
             <div class="card-body">
-                <h5 class="card-title">Datatables</h5>
+                <h5 class="card-title">Order</h5>
             <div class="col-sm-12 d-flex justify-content-between">
                 <p>Silahkan olah order yang sudah masuk pada tabel di bawah ini.</p>
                 <div class="d-flex">
@@ -89,6 +89,4 @@
     </section>
 
   </main><!-- End #main -->
-
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 @endsection

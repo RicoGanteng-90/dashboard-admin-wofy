@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('partners', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 50);
-            $table->string('email', 50);
-            $table->string('number');
-            $table->string('keterangan');
-            $table->string('address', 100);
+            $table->string('name', 50)->nullable();
+            $table->string('email', 50)->nullable();
+            $table->string('number')->nullable();
+            $table->string('keterangan')->nullable();
+            $table->string('address', 100)->nullable();
             $table->timestamps();
         });
     }

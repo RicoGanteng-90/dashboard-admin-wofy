@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\customer;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -16,8 +17,15 @@ class MessageFactory extends Factory
      */
     public function definition(): array
     {
+        $cust=customer::all()->random();
         return [
-            //
+            'customer_id' => $cust->id,
+                'name' => $this->faker->firstName(),
+                'email' => $this->faker->email(),
+                'number' => $this->faker->phoneNumber(),
+                'message' => 'Hello',
+                'created_at' => now(),
+                'updated_at' => now(),
         ];
     }
 }

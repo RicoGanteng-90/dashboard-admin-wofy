@@ -10,7 +10,7 @@
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/logofanny.png" rel="icon">
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
@@ -45,7 +45,7 @@
 
     <div class="d-flex align-items-center justify-content-between">
       <a href="index.html" class="logo d-flex align-items-center">
-        <img src="assets/img/logo.png" alt="">
+        <img src="assets/img/logofanny.png" alt="">
         <span class="d-none d-lg-block">Wofy</span>
       </a>
       <i class="bi bi-list toggle-sidebar-btn"></i>
@@ -150,6 +150,20 @@
         <a class="nav-link collapsed" href="{{route('employee.index')}}">
           <i class="bi bi-person"></i>
           <span>Employee</span>
+        </a>
+      </li><!-- End Profile Page Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="{{route('partner.index')}}">
+            <i class="bi bi-person-hearts"></i>
+          <span>Partner</span>
+        </a>
+      </li><!-- End Profile Page Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="{{route('message.index')}}">
+            <i class="bi bi-chat-left-quote"></i>
+          <span>Message</span>
         </a>
       </li><!-- End Profile Page Nav -->
 

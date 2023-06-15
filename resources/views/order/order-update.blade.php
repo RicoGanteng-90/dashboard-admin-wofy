@@ -18,19 +18,19 @@
     </div><!-- End Page Title -->
 
     @if(session('warning'))
-        <div class="alert alert-danger">{{ session('warning') }}</div>
+        <div style="text-align: center" class="alert alert-danger">{{ session('warning') }}</div>
     @endif
 
     @if(session('warning2'))
-        <div class="alert alert-danger">{{ session('warning2') }}</div>
+        <div style="text-align: center" class="alert alert-danger">{{ session('warning2') }}</div>
     @endif
 
     @if(session('success'))
-        <div class="alert alert-success">{{ session('success') }}</div>
+        <div style="text-align: center" class="alert alert-success">{{ session('success') }}</div>
     @endif
 
     @if(session('success2'))
-        <div class="alert alert-success">{{ session('success2') }}</div>
+        <div style="text-align: center" class="alert alert-success">{{ session('success2') }}</div>
     @endif
 
               <!-- Table with stripped rows -->

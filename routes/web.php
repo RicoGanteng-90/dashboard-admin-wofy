@@ -8,7 +8,9 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DateController;
 use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\MessageController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\PartnerController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SessionController;
@@ -75,3 +77,13 @@ Route::get('/employee-index', [EmployeeController::class, 'index'])->name('emplo
 Route::post('/employee-add', [EmployeeController::class, 'store'])->name('employee.store');
 Route::post('/employee-update/{id}', [EmployeeController::class, 'update'])->name('employee.update');
 Route::delete('/employee-delete/{id}', [EmployeeController::class, 'destroy'])->name('employee.destroy');
+
+//Partner session
+Route::get('/partner-index', [PartnerController::class, 'index'])->name('partner.index')->middleware('auth');
+Route::post('/partner-add', [PartnerController::class, 'store'])->name('partner.store');
+Route::post('/partner-update/{id}', [PartnerController::class, 'update'])->name('partner.update');
+Route::delete('/partner-delete/{id}', [PartnerController::class, 'destroy'])->name('partner.destroy');
+
+//Message session
+Route::get('/message-index', [MessageController::class, 'index'])->name('message.index')->middleware('auth');
+Route::delete('/message-delete', [MessageController::class, 'destroy'])->name('message.destroy');
