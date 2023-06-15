@@ -24,18 +24,11 @@
         <div style="text-align: center" class="alert alert-success">{{session('success')}}</div>
     @endif
 
-    <section class="section">
-      <div class="row">
-        <div class="col-lg-12">
-
         <form action="{{ route('order.destroy') }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('DELETE')
-          <div class="card">
-            <div class="card-body">
-                <h5 class="card-title">Order</h5>
             <div class="col-sm-12 d-flex justify-content-between">
-                <p>Silahkan olah order yang sudah masuk pada tabel di bawah ini.</p>
+                <h5 class="card-title">Order</h5>
                 <div class="d-flex">
                     <button name="delete-order" type="submit" class="btn btn-danger d-block mx-auto" onclick="return confirm('Yakin untuk menghapus?');">Delete</button>
                 </div>
@@ -80,13 +73,7 @@
                 </tbody>
               </table>
               <!-- End Table with stripped rows -->
-            </div>
-          </div>
         </form>
-
-        </div>
-      </div>
-    </section>
 
   </main><!-- End #main -->
 @endsection
