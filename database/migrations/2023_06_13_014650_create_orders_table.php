@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('address', 100);
             $table->string('total_products', 50);
             $table->integer('total_price');
-            $table->dateTime('order_time');
+            $table->dateTime('order_time')->useCurrent();
             $table->dateTime('event_time');
             $table->string('order_status')->nullable();
             $table->string('proof_payment')->nullable();

@@ -57,15 +57,22 @@ class DateController extends Controller
      * Update the specified resource in storage.
      */
     public function update(Request $request, string $id)
-    {
-        $date = order::findOrFail($id);
+{
+    $date = order::findOrFail($id);
 
-        $date->event_time=$request->input('event_time');
+    $newEventTime = $request->input('event_time');
 
-        $date->save();
-
-        return back()->with('success', 'Tanggal diundur!');
+    if ($newEventTime == $date->event_time) {
+        return back()->with('info', 'Tidak ada perubahan yang dilakukan.');
     }
+
+    $date->event_time = $newEventTime;
+    $date->save();
+
+    return back()->with('success', 'Tanggal diundur!');
+}
+
+
 
     /**
      * Remove the specified resource from storage.

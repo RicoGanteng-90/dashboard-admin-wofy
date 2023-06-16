@@ -13,54 +13,52 @@ class OrderController extends Controller
         return view('order.order-data', compact('order'));
     }
 
-    public function update(Request $request, $id) {
-        $order = order::findOrFail($id);
+    public function update(Request $request, $id)
+{
+    $order = Order::findOrFail($id);
 
-        $order->order_status=$request->input('order_status');
-        $order->payment_status=$request->input('payment_status');
+    $orderStatus = $request->input('order_status');
+    $paymentStatus = $request->input('payment_status');
 
-        $order->save();
+    // Cek apakah ada perubahan
+    if ($orderStatus == $order->order_status && $paymentStatus == $order->payment_status) {
+        return back()->with('warning3', 'Tidak ada perubahan yang dilakukan.');
+    }
 
-    if ($order->order_status == 'Ditolak' && $order->payment_status == 'Belum lunas') {
-        return back()->with([
-            'warning' => 'Order ditolak!',
-            'warning2' => 'Order belum lunas!'
-        ]);
-    } elseif ($order->order_status == 'Ditolak' && $order->payment_status == 'Lunas') {
-        return back()->with([
-            'warning' => 'Order ditolak',
-            'success' => 'Order lunas!'
-        ]);
-    } elseif ($order->order_status == 'Diterima' && $order->payment_status == 'Belum lunas') {
-        return back()->with([
-            'success' => 'Order diterima!',
-            'warning' => 'Order belum lunas!'
-        ]);
-    } elseif ($order->order_status == 'Diterima' && $order->payment_status == 'Lunas') {
-        return back()->with([
-            'success' => 'Order diterima!',
-            'success2' =>  'Order lunas!'
-        ]);
-    } elseif ($order->order_status == 'Diterima' && $order->payment_status == null) {
-        return back()->with([
-            'success' => 'Order diterima!'
-        ]);
-    } elseif ($order->order_status == 'Ditolak' && $order->payment_status == null) {
-        return back()->with([
-            'success' => 'Order ditolak!'
-        ]);
-    } elseif ($order->order_status == null && $order->payment_status == 'Belum lunas') {
-        return back()->with([
-            'success' => 'Belum lunas!'
-        ]);
-    } elseif ($order->order_status == null && $order->payment_status == 'Lunas') {
-        return back()->with([
-            'success' => 'Lunas!'
-        ]);
+    // Lakukan pembaruan data
+    $order->order_status = $orderStatus;
+    $order->payment_status = $paymentStatus;
+    $order->save();
+
+    // Set pesan berdasarkan kombinasi status
+    $messages = [];
+    if ($orderStatus == 'Ditolak' && $paymentStatus == 'Belum lunas') {
+        $messages['warning'] = 'Order ditolak!';
+        $messages['warning2'] = 'Order belum lunas!';
+    } elseif ($orderStatus == 'Ditolak' && $paymentStatus == 'Lunas') {
+        $messages['warning'] = 'Order ditolak!';
+        $messages['success'] = 'Order lunas!';
+    } elseif ($orderStatus == 'Diterima' && $paymentStatus == 'Belum lunas') {
+        $messages['success'] = 'Order diterima!';
+        $messages['warning'] = 'Order belum lunas!';
+    } elseif ($orderStatus == 'Diterima' && $paymentStatus == 'Lunas') {
+        $messages['success'] = 'Order diterima!';
+        $messages['success2'] = 'Order lunas!';
+    } elseif ($orderStatus == 'Diterima' && $paymentStatus == null) {
+        $messages['success'] = 'Order diterima!';
+    } elseif ($orderStatus == 'Ditolak' && $paymentStatus == null) {
+        $messages['success'] = 'Order ditolak!';
+    } elseif ($orderStatus == null && $paymentStatus == 'Belum lunas') {
+        $messages['success'] = 'Belum lunas!';
+    } elseif ($orderStatus == null && $paymentStatus == 'Lunas') {
+        $messages['success'] = 'Lunas!';
     } else {
         return back()->withErrors(['warning' => 'Terjadi Error!']);
     }
+
+    return back()->with($messages);
 }
+
 
 
     public function destroy(Request $request) {

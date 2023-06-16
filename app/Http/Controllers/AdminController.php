@@ -55,15 +55,19 @@ class AdminController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $admin = user::findOrFail($id);
+        $admin = User::findOrFail($id);
 
+        if ($admin->name !== $request->input('name') || $admin->number !== $request->input('number') || $admin->address !== $request->input('address') || !empty($request->input('password'))) {
             $admin->name = $request->input('name');
             $admin->number = $request->input('number');
             $admin->address = $request->input('address');
             $admin->password = Hash::make($request->input('password'));
             $admin->save();
+            return back()->with('success', 'Data updated.');
+        } else {
+            return back()->with('warning', 'No changes detected.');
+        }
 
-        return back()->with('success', 'Data updated.');
     }
 
     /**

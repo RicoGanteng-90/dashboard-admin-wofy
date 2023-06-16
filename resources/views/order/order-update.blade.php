@@ -17,12 +17,21 @@
       </nav>
     </div><!-- End Page Title -->
 
+    <b>
     @if(session('warning'))
         <div style="text-align: center" class="alert alert-danger">{{ session('warning') }}</div>
     @endif
 
     @if(session('warning2'))
         <div style="text-align: center" class="alert alert-danger">{{ session('warning2') }}</div>
+    @endif
+
+    @if(session('warning3'))
+        <div style="text-align: center" class="alert alert-warning">{{ session('warning3') }}</div>
+    @endif
+
+    @if(session('info'))
+        <div style="text-align: center" class="alert alert-warning">{{ session('info') }}</div>
     @endif
 
     @if(session('success'))
@@ -32,6 +41,7 @@
     @if(session('success2'))
         <div style="text-align: center" class="alert alert-success">{{ session('success2') }}</div>
     @endif
+    </b>
 
               <!-- Table with stripped rows -->
               <table class="table datatable">

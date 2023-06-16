@@ -23,6 +23,10 @@
             <div style="text-align: center" class="alert alert-success">{{session('success')}}</div>
         @endif
 
+        @if(session('error'))
+            <div style="text-align: center" class="alert alert-warning">{{session('error')}}</div>
+        @endif
+
         @if(session('message'))
             <div style="text-align: center" class="alert alert-danger">{{session('message')}}</div>
         @endif

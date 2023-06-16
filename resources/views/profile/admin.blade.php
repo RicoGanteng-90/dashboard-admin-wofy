@@ -29,6 +29,10 @@
     @if(session('success'))
         <div style="text-align: center" class="alert alert-success">{{session('success')}}</div>
     @endif
+
+    @if(session('warning'))
+        <div style="text-align: center" class="alert alert-warning">{{session('warning')}}</div>
+    @endif
     </b>
 
 <!-- Table with stripped rows -->

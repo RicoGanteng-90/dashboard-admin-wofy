@@ -61,41 +61,54 @@ class ProductController extends Controller
             'image' => 'nullable|image',
         ]);
 
-        if ($validatedData){
-        $product = Product::findOrFail($id);
+        try {
+            $product = Product::findOrFail($id);
 
-        if ($request->has('name')) {
-            $product->name = $request->input('name');
-            }
+            if ($validatedData) {
+                $isUpdated = false;
 
-            if ($request->has('category')) {
-            $product->category = $request->input('category');
-            }
-
-            if ($request->has('keterangan')) {
-            $product->keterangan = $request->input('keterangan');
-            }
-
-            if ($request->has('price')) {
-            $product->price = $request->input('price');
-            }
-
-            if ($request->hasFile('image')) {
-                $myFile = 'product/'.$product->image;
-                if(File::exists($myFile))
-                {
-                    File::delete($myFile);
+                if ($request->has('name') && $product->name != $request->input('name')) {
+                    $product->name = $request->input('name');
+                    $isUpdated = true;
                 }
 
-                $request->file('image')->move(public_path('product/'), $request->file('image')->getClientOriginalName());
-                $product->image=$request->file('image')->getClientOriginalName();
+                if ($request->has('category') && $product->category != $request->input('category')) {
+                    $product->category = $request->input('category');
+                    $isUpdated = true;
+                }
+
+                if ($request->has('keterangan') && $product->keterangan != $request->input('keterangan')) {
+                    $product->keterangan = $request->input('keterangan');
+                    $isUpdated = true;
+                }
+
+                if ($request->has('price') && $product->price != $request->input('price')) {
+                    $product->price = $request->input('price');
+                    $isUpdated = true;
+                }
+
+                if ($request->hasFile('image')) {
+                    $myFile = 'product/' . $product->image;
+                    if (File::exists($myFile)) {
+                        File::delete($myFile);
+                    }
+
+                    $request->file('image')->move(public_path('product/'), $request->file('image')->getClientOriginalName());
+                    $product->image = $request->file('image')->getClientOriginalName();
+                    $isUpdated = true;
+                }
+
+                if ($isUpdated) {
+                    $product->save();
+                    return back()->with('success', 'Product updated.');
+                } else {
+                    return back()->with('error', 'No changes detected.');
+                }
+            } else {
+                return back()->with('error', 'Failed to update.');
             }
-
-                $product->save();
-
-                return back()->with('success', 'Product updated.');
-        }else{
-            return back()->withErrors(['error'=>'Failed to update.']);
+        } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $exception) {
+            return back()->with('error', 'Product not found.');
         }
 
     }
