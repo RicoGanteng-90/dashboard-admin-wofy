@@ -66,7 +66,7 @@
                     <td>{{$ord->order_time}}</td>
                     <td>{{$ord->event_time}}</td>
                     <td>{{$ord->order_status}}</td>
-                    <td><a href="{{ route('image.download', ['proof_payment' => $ord->proof_payment]) }}"><img src="{{ asset('bukti/' . $ord->proof_payment) }}" alt=""></a>
+                    <td><a href="{{ route('image.download', ['proof_payment' => $ord->proof_payment]) }}"><img src="{{ asset('bukti/' . $ord->proof_payment) }}" alt="Bukti belum ada"></a>
                     </td>
                     <td>{{$ord->payment_status}}</td>
                   </tr>

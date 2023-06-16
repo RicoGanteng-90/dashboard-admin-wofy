@@ -12,8 +12,13 @@ class ImageController extends Controller
 {
         $filePath = public_path('bukti/'.$proof_payment);
         if (file_exists($filePath)) {
-            return response()->download($filePath);
+            $originalFileName = pathinfo($proof_payment, PATHINFO_FILENAME);
+            $extension = pathinfo($proof_payment, PATHINFO_EXTENSION);
+
+            $newFileName = 'buktiPembayaran.'.$extension; // Nama baru yang diinginkan untuk file yang diunduh
+            return response()->download($filePath, $newFileName);
         }
+        return back()->with('info', 'Gambar belum ada.');
 }
 
 }
