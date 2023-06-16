@@ -83,7 +83,7 @@
             <li>
               <a class="dropdown-item d-flex align-items-center" href="/register-show">
                 <i class="bi bi-gear"></i>
-                <span>Register</span>
+                <span>Add new admin</span>
               </a>
             </li>
 

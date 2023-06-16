@@ -33,10 +33,6 @@
               <h2>{{Auth::user()->name}}</h2>
               <h3>{{Auth::user()->job}}</h3>
               <div class="social-links mt-2">
-                <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
-                <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
-                <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
-                <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
               </div>
             </div>
           </div>
@@ -178,34 +174,6 @@
                       <label for="email" class="col-md-4 col-lg-3 col-form-label">Email</label>
                       <div class="col-md-8 col-lg-9">
                         <input name="email" type="email" class="form-control" id="email" value="{{Auth::user()->email}}">
-                      </div>
-                    </div>
-
-                    <div class="row mb-3">
-                      <label for="twitter" class="col-md-4 col-lg-3 col-form-label">Twitter Profile</label>
-                      <div class="col-md-8 col-lg-9">
-                        <input name="twitter" type="text" class="form-control" id="twitter" value="https://twitter.com/#">
-                      </div>
-                    </div>
-
-                    <div class="row mb-3">
-                      <label for="facebook" class="col-md-4 col-lg-3 col-form-label">Facebook Profile</label>
-                      <div class="col-md-8 col-lg-9">
-                        <input name="facebook" type="text" class="form-control" id="facebook" value="https://facebook.com/#">
-                      </div>
-                    </div>
-
-                    <div class="row mb-3">
-                      <label for="instagram" class="col-md-4 col-lg-3 col-form-label">Instagram Profile</label>
-                      <div class="col-md-8 col-lg-9">
-                        <input name="instagram" type="text" class="form-control" id="instagram" value="https://instagram.com/#">
-                      </div>
-                    </div>
-
-                    <div class="row mb-3">
-                      <label for="Linkedin" class="col-md-4 col-lg-3 col-form-label">Linkedin Profile</label>
-                      <div class="col-md-8 col-lg-9">
-                        <input name="linkedin" type="text" class="form-control" id="Linkedin" value="https://linkedin.com/#">
                       </div>
                     </div>
 
