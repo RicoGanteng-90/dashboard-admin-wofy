@@ -14,6 +14,7 @@ use App\Http\Controllers\PartnerController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SessionController;
+use App\Http\Controllers\ImageController;
 use Illuminate\Contracts\Session\Session;
 use Symfony\Component\HttpKernel\Profiler\Profile;
 
@@ -87,3 +88,6 @@ Route::delete('/partner-delete/{id}', [PartnerController::class, 'destroy'])->na
 //Message session
 Route::get('/message-index', [MessageController::class, 'index'])->name('message.index')->middleware('auth');
 Route::delete('/message-delete', [MessageController::class, 'destroy'])->name('message.destroy');
+
+
+Route::get('/download-image/{proof_payment}', [ImageController::class, 'download'])->name('image.download');
