@@ -47,7 +47,11 @@ class OrderAPIController extends Controller
             'method' => 'required',
             'address' => 'required',
             'total_products' => 'required',
+            'total_price' => 'required',
             'order_time' => 'nullable',
+            'payment_status' => 'nullable',
+            'proof_payment' => 'nullable',
+            'order_status' => 'nullable',
             'event_time' => 'required',
         ]);
 
