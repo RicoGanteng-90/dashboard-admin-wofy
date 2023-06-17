@@ -52,9 +52,8 @@ class OrderAPIController extends Controller
             'event_time' => 'required',
         ]);
 
-        $order=order::create($validatedData);
-
-        $order->save();
+        $order = Order::create($validatedData);
+        return response()->json($order);
     }
 
     /**
