@@ -14,6 +14,7 @@ class order extends Model
         'name',
         'email',
         'method',
+        'number',
         'address',
         'total_products',
         'total_price',

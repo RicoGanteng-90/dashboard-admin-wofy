@@ -42,11 +42,12 @@ class OrderAPIController extends Controller
         $validatedData = $request->validate([
             'customer_id' => 'integer',
             'name' => 'required|max:100',
-            'number' => 'required|integer',
+            'number' => 'required',
             'email' => 'required',
             'method' => 'required',
             'address' => 'required',
             'total_products' => 'required',
+            'total_price' => 'required',
             'order_time' => 'required',
             'event_time' => 'required',
         ]);
