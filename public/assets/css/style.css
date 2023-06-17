@@ -1268,3 +1268,7 @@ label {
     padding:1rem 0;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
  }
+
+.product-description {
+    white-space: pre-line;
+}

@@ -63,13 +63,13 @@
                 </div>
                 <div class="col-8">
                     <div class="form-floating">
-                    <textarea name="keterangan" class="form-control" placeholder="Kategori" id="keterangan" style="height: 100px;" required></textarea>
-                    <label for="kategory">Keterangan</label>
+                    <textarea name="keterangan" class="form-control" placeholder="Keterangan" id="keterangan" style="height: 100px;"></textarea>
+                    <label for="keterangan">Keterangan</label>
                     </div>
                 </div>
                 <div class="col-12">
                     <label for="image" class="form-label">Gambar</label>
-                    <input name="image" type="file" class="form-control" id="image" required>
+                    <input name="image" type="file" class="form-control" id="image">
                 </div>
                 <div class="text-center">
                 <button type="submit" class="btn btn-primary">Submit</button>
@@ -80,20 +80,20 @@
             </div>
         </div>
 
-        <div class="row">
+        <div class="row" style="flex-wrap: wrap;">
 
             @foreach($product as $prod)
 
             <div class="col-lg-4">
                 <div class="card">
-                    <img src="{{ asset('product/'.$prod->image) }}" class="card-img-top" alt="">
+                        <img src="{{ asset('product/'.$prod->image) }}" class="card-img" style="height: 300px;" alt="{{asset('profile/blank.png')}}" onerror="this.onerror=null; this.src='{{ asset('profile/blank.png') }}'">
                     <div class="card-body">
                         <div class="d-flex justify-content-between align-items-center">
                             <h5 class="card-title">{{ $prod->name }}</h5>
                             <p class="card-text">{{ $prod->category }}</p>
                         </div>
                         <b><p class="card-text" style="font-style:italic"><span>Rp. </span>{{number_format($prod->price,2,',','.')}}<span></span></p></b><br>
-                        <p class="card-text">{{ $prod->keterangan }}</p>
+                        <p class="card-text product-description">{{ $prod->keterangan }}</p>
 
                         <div class="d-flex justify-content-between">
                             <a href="{{ url('product-show/'.$prod->id) }}" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#updateProduct{{ $prod->id }}"><i class="bi bi-pencil-square"></i> Update</a>
@@ -110,7 +110,7 @@
                                             <div class="modal-body" style="min-height: 650px;">
                                                 <form id="update-form-{{$prod->id}}" class="row g-3" action="/product-update/{{$prod->id}}" method="POST" enctype="multipart/form-data">
                                                     @csrf
-                                                    <img src="{{ asset('product/'.$prod->image) }}" alt=""><br><br>
+                                                    <img src="{{ asset('product/'.$prod->image) }}" alt="{{asset('profile/blank.png')}}" onerror="this.onerror=null; this.src='{{ asset('profile/blank.png') }}'"><br><br>
                                                     <div class="col-6">
                                                         <label for="name" class="form-label">Name</label>
                                                         <input name="name" type="text" class="form-control" id="name" value="{{$prod->name}}" required>

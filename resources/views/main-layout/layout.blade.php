@@ -160,13 +160,6 @@
         </a>
       </li><!-- End Profile Page Nav -->
 
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="{{route('message.index')}}">
-            <i class="bi bi-chat-left-quote"></i>
-          <span>Message</span>
-        </a>
-      </li><!-- End Profile Page Nav -->
-
       <li class="nav-heading">Person</li>
 
       <li class="nav-item">
@@ -194,13 +187,6 @@
         </ul>
       </li><!-- End Tables Nav -->
 
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="{{route('session.index')}}">
-          <i class="bi bi-box-arrow-in-right"></i>
-          <span>Login</span>
-        </a>
-      </li><!-- End Login Page Nav -->
-
     </ul>
 
   </aside><!-- End Sidebar-->
@@ -219,7 +205,7 @@
       <!-- You can delete the links only if you purchased the pro version. -->
       <!-- Licensing information: https://bootstrapmade.com/license/ -->
       <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
-      Designed by <a href="https://bootstrapmade.com/">Rahmanda Rico Lutfiansyah</a>
+      Designed <a href="https://github.com/RicoGanteng-90">Rahmanda Rico Lutfiansyah</a>
     </div>
   </footer><!-- End Footer -->
 

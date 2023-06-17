@@ -32,6 +32,10 @@ class DashboardController extends Controller
             'employeecount' => employee::count(),
             'partnercount' => partner::count(),
             'messagecount' => message::count(),
+            'cat1count' => product::where('category', 'Makeup')->count(),
+            'cat2count' => product::where('category', 'Paket Wedding')->count(),
+            'cat3count' => product::where('category', 'Extra Wedding')->count(),
+            'cat4count' => product::where('category', 'Paket Foto')->count(),
         ];
 
 
@@ -46,7 +50,11 @@ class DashboardController extends Controller
             ->with('customercount', $data['customercount'])
             ->with('employeecount', $data['employeecount'])
             ->with('partnercount', $data['partnercount'])
-            ->with('messagecount', $data['messagecount']);
+            ->with('messagecount', $data['messagecount'])
+            ->with('cat1count', $data['cat1count'])
+            ->with('cat2count', $data['cat2count'])
+            ->with('cat3count', $data['cat3count'])
+            ->with('cat4count', $data['cat4count']);
     }
 
     /**
