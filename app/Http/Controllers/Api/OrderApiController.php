@@ -56,7 +56,7 @@ class OrderAPIController extends Controller
         ]);
 
         $order = Order::create($validatedData);
-        return response()->json(['message' => 'Order berhasil ditambahkan.', 'order' => $order]);
+        return response()->json($order);
     }
 
     /**
