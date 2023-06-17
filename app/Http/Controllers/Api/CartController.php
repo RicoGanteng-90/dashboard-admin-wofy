@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class CartController extends Controller
 {
-    function store(Request $request){
+   public function store(Request $request){
 
         $validatedData = $request->validate([
             'customer_id' => 'integer',
@@ -23,6 +23,8 @@ class CartController extends Controller
 
         return response()->json($cart, 201);
     }
+
+
 
     function show($id){
 
@@ -39,7 +41,6 @@ class CartController extends Controller
 
         return response()->json(['message' => 'Cart item deleted successfully']);
     }
-
     function update(Request $request, cart $cart){
 
         $validatedData = $request->validate([
