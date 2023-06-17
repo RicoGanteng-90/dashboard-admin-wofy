@@ -40,24 +40,23 @@ class OrderAPIController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'customer_id' => 'integer',
-            'name' => 'required|max:100',
-            'number' => 'required|integer',
-            'email' => 'required',
-            'method' => 'required',
-            'address' => 'required',
-            'total_products' => 'required',
-            'total_price' => 'required',
-            'order_time' => 'nullable',
-            'payment_status' => 'nullable',
-            'proof_payment' => 'nullable',
-            'order_status' => 'nullable',
-            'event_time' => 'required',
+            'customer_id' => 'required|numeric',
+            'name' => 'required|string|max:100',
+            'number' => 'required|string|max:50',
+            'email' => 'required|string|email|max:50',
+            'method' => 'required|string|max:50',
+            'address' => 'required|string|max:100',
+            'total_products' => 'required|string|max:50',
+            'total_price' => 'required|integer',
+            'order_time' => 'nullable|date',
+            'event_time' => 'required|date',
+            'order_status' => 'nullable|string|max:255',
+            'proof_payment' => 'nullable|string|max:255',
+            'payment_status' => 'nullable|string|max:255',
         ]);
 
-        $order=order::create($validatedData);
-
-        $order->save();
+        $order = Order::create($validatedData);
+        return response()->json(['message' => 'Order berhasil ditambahkan.', 'order' => $order]);
     }
 
     /**
