@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\KeranjangController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -32,11 +33,15 @@ Route::post('/login', [LoginApiController::class, 'login']);
 Route::post('/register', [LoginApiController::class, 'register']);
 Route::post('/logout', [LoginApiController::class, 'logout']);
 
-//Products (Mungkin tidak semuanya terpakai/menyesuaikan)
+//Products (Mungkin t   idak semuanya terpakai/menyesuaikan)
 Route::get('/products', [ProductAPIController::class, 'index']);
 Route::post('/products-add', [ProductAPIController::class, 'store']);
 Route::get('/products/{id}', [ProductAPIController::class, 'show']);
+Route::get('/products/category/{category}',[ProductAPIController::class,'getByCategory']);
 
+Route::post('/keranjangtambah', [KeranjangController::class, 'tambahKeranjang']);
+Route::put('/keranjangupdate', [KeranjangController::class, 'updates']);
+Route::get('/keranjang/{customer_id}', [KeranjangController::class, 'keranjangByUser']);
 //Search
 Route::get('/search/{name}', [SearchApiController::class, 'search']);
 
@@ -46,6 +51,7 @@ Route::get('/orders-show/{customer_id}', [OrderAPIController::class, 'show']);
 Route::post('/orders-add', [OrderAPIController::class, 'store']);
 Route::put('/orders-image', [OrderAPIController::class, 'update']);
 Route::delete('/orders-delete/{id}', [OrderAPIController::class, 'destroy']);
+
 
 //customer account (Mungkin tidak semuanya terpakai/menyesuaikan)
 Route::get('/customer_accounts', [CustomerAPIController::class, 'index']);
@@ -58,10 +64,8 @@ Route::get('/message', [MessageAPIController::class, 'index']);
 Route::post('/message-add', [MessageAPIController::class, 'store']);
 
 //cart (Mungkin tidak semuanya terpakai/menyesuaikan)
+Route::post('/cart-add', [CartController::class, 'store']);
 Route::get('/cart/{customer_id}', [CartController::class, 'index']);
 Route::post('/cart-add', [CartController::class, 'store']);
 Route::post('/cart-delete/{id}', [CartController::class, 'destroy']);
 Route::post('/cart-find/{id}', [CartController::class, 'show']);
-
-
-

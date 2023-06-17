@@ -15,9 +15,13 @@ class ProductAPIController extends Controller
      */
     public function index()
     {
-        $product=product::all();
+        $products = Product::all();
 
-        return response()->json($product);
+        if ($products->count() === 0) {
+            return response()->json(['message' => 'Tidak ada produk tersedia.']);
+        }
+
+        return response()->json($products);
     }
 
     /**
@@ -36,6 +40,22 @@ class ProductAPIController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+    public function getByCategory($category)
+    {
+        $products = Product::where('category', $category)->get();
+
+        if ($products->count() === 0) {
+            return response()->json(['message' => 'Tidak ada produk dengan kategori ini.']);
+        }
+
+        return response()->json($products);
+    }
+
+    public function getAllProducts()
+{
+
+}
+
     public function store(Request $request)
     {
         $product=Product::create($request->all());
