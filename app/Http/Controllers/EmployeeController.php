@@ -15,11 +15,11 @@ class EmployeeController extends Controller
 
     public function store(Request $request)
     {   $validatedData = $request->validate([
-        'name' => 'string|max:100',
-        'email' => 'email|unique|max:100',
-        'phone' => 'string|max:50',
-        'position' => 'string|max:50',
-        'address' => 'string|max:50',
+        'name' => 'string|max:500',
+        'email' => 'email|unique|max:500',
+        'phone' => 'string|max:500',
+        'position' => 'string|max:500',
+        'address' => 'string|max:500',
     ]);
 
     if ($validatedData){

@@ -13,12 +13,12 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 100);
-            $table->string('number', 50);
-            $table->string('email', 50);
-            $table->string('method', 50);
-            $table->string('address', 100);
-            $table->string('total_products', 100);
+            $table->string('name');
+            $table->string('number');
+            $table->string('email');
+            $table->string('method');
+            $table->string('address');
+            $table->string('total_products');
             $table->integer('total_price');
             $table->dateTime('order_time')->useCurrent();
             $table->dateTime('event_time');

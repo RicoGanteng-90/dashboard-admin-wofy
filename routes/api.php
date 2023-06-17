@@ -33,7 +33,7 @@ Route::post('/login', [LoginApiController::class, 'login']);
 Route::post('/register', [LoginApiController::class, 'register']);
 Route::post('/logout', [LoginApiController::class, 'logout']);
 
-//Products (Mungkin t   idak semuanya terpakai/menyesuaikan)
+//Products (Mungkin tidak semuanya terpakai/menyesuaikan)
 Route::get('/products', [ProductAPIController::class, 'index']);
 Route::post('/products-add', [ProductAPIController::class, 'store']);
 Route::get('/products/{id}', [ProductAPIController::class, 'show']);

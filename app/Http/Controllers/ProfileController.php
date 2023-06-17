@@ -73,14 +73,14 @@ class ProfileController extends Controller
     {
         // Validasi input yang diterima dari request
         $request->validate([
-            'name' => 'nullable|string|max:255',
+            'name' => 'nullable|string|max:500',
             'email' => 'nullable|email|max:50|unique:users,email,'.Auth::id(),
-            'about' => 'nullable|string|max:255',
-            'company' => 'nullable|string|max:50',
-            'job' => 'nullable|string|max:100',
-            'country' => 'nullable|string|max:30',
-            'address' => 'nullable|string|max:100',
-            'number' => 'nullable|string|max:20',
+            'about' => 'nullable|string|max:500',
+            'company' => 'nullable|string|max:500',
+            'job' => 'nullable|string|max:500',
+            'country' => 'nullable|string|max:500',
+            'address' => 'nullable|string|max:500',
+            'number' => 'nullable|string|max:50',
             'profile_img' => 'nullable|image|max:2048',
         ]);
 

@@ -22,11 +22,11 @@ class ProductController extends Controller
 
     public function store(Request $request) {
         $validatedData = $request->validate([
-            'name' => 'required|string|max:100',
-            'category' => 'required|string|max:100',
-            'keterangan' => 'required|string|max:100',
-            'price' => 'required|string|max:100',
-            'image' => 'required|image|max:2048',
+            'name' => 'required|string|max:500',
+            'category' => 'required|string|max:500',
+            'keterangan' => 'string|max:500',
+            'price' => 'required|string|max:500',
+            'image' => 'image|max:2048',
         ]);
 
         if($validatedData){
@@ -54,10 +54,10 @@ class ProductController extends Controller
 
     public function update(Request $request, $id) {
         $validatedData = $request -> validate([
-            'name' => 'nullable|string|max:100',
-            'category' => 'nullable|string|max:100',
-            'keterangan' => 'nullable|string|max:100',
-            'price' => 'nullable|string|max:100',
+            'name' => 'nullable|string|max:500',
+            'category' => 'nullable|string|max:500',
+            'keterangan' => 'nullable|string|max:500',
+            'price' => 'nullable|string|max:500',
             'image' => 'nullable|image',
         ]);
 
