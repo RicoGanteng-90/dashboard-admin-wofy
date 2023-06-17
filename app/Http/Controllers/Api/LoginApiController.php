@@ -23,13 +23,35 @@ class LoginApiController extends Controller
 
     if ($customer && Hash::check($credentials['password'], $customer->password)) {
         // Login berhasil
-        return response()->json(['message'=>'Succesfull']);
+        $data = [
+            'message' => 'Successful',
+            'username' => $customer->name,
+            'email' => $customer->email,
+            'phone_number' => $customer->number,
+            'idakun' => strval($customer->id)
+        ];
+        return response()->json($data);
     } else {
         // Login gagal
-        return response()->json(['message'=>'Failed']);
+        return response()->json(  $data = [
+            'message' => 'Successful',
+            'username' => $customer->name,
+            'email' => $customer->email,
+            'phone_number' => $customer->number,
+            'idakun' => strval('0')
+        ]);
     }
     }
+    public function register(Request $request)
+    {
+        $customer=customer::create($request->all());
 
+        $customer->password = Hash::make($request->password);
+
+        $customer->save();
+
+        return response()->json(['message'=>'succesfull']);
+    }
     public function logout()
     {
         Auth::logout();
@@ -43,16 +65,7 @@ class LoginApiController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function register(Request $request)
-    {
-        $customer=customer::create($request->all());
 
-        $customer->password = Hash::make($request->password);
-
-        $customer->save();
-
-        return response()->json(['message'=>'succesfull']);
-    }
 
     /**
      * Store a newly created resource in storage.

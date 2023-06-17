@@ -13,6 +13,26 @@ class OrderController extends Controller
         return view('order.order-data', compact('order'));
     }
 
+    public function insertOrder(Request $request){
+    $validatedData = $request->validate([
+        'customer_id' => 'required|numeric',
+        'name' => 'required|string|max:100',
+        'number' => 'required|string|max:50',
+        'email' => 'required|string|email|max:50',
+        'method' => 'required|string|max:50',
+        'address' => 'required|string|max:100',
+        'total_products' => 'required|string|max:50',
+        'total_price' => 'required|integer',
+        'event_time' => 'required|date',
+        'order_status' => 'nullable|string|max:255',
+        'proof_payment' => 'nullable|string|max:255',
+        'payment_status' => 'nullable|string|max:255',
+    ]);
+
+    $order = Order::create($validatedData);
+    return response()->json(['message' => 'Order berhasil ditambahkan.', 'order' => $order]);
+}
+
     public function update(Request $request, $id)
 {
     $order = Order::findOrFail($id);

@@ -32,10 +32,11 @@ Route::post('/login', [LoginApiController::class, 'login']);
 Route::post('/register', [LoginApiController::class, 'register']);
 Route::post('/logout', [LoginApiController::class, 'logout']);
 
-//Products (Mungkin tidak semuanya terpakai/menyesuaikan)
+//Products (Mungkin t   idak semuanya terpakai/menyesuaikan)
 Route::get('/products', [ProductAPIController::class, 'index']);
 Route::post('/products-add', [ProductAPIController::class, 'store']);
 Route::get('/products/{id}', [ProductAPIController::class, 'show']);
+Route::get('/products/category/{category}',[ProductAPIController::class,'getByCategory']);
 
 //Search
 Route::get('/search/{name}', [SearchApiController::class, 'search']);
@@ -62,6 +63,3 @@ Route::get('/cart/{customer_id}', [CartController::class, 'index']);
 Route::post('/cart-add', [CartController::class, 'store']);
 Route::post('/cart-delete/{id}', [CartController::class, 'destroy']);
 Route::post('/cart-find/{id}', [CartController::class, 'show']);
-
-
-
