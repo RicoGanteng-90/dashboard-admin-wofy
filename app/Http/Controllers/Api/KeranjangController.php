@@ -27,14 +27,15 @@ class KeranjangController extends Controller
     public function updates(Request $request)
     {
         $validatedData = $request->validate([
-            'id' =>'required|integer',
-            'customer_id' => 'required|integer',
-            'pid' => 'required|integer',
+            'id' => 'required',
+            'customer_id' => 'required',
+            'pid' => 'required',
             'name' => 'required|max:100',
-            'price' => 'required|integer',
-            'quantity' => 'required|integer',
-            'image' => 'required|string',
+            'price' => 'required',
+            'quantity' => 'required',
+            'image' => 'required',
         ]);
+
 
         // Dapatkan customer_id dan pid dari $validatedData
         $customerId = $validatedData['customer_id'];
@@ -65,10 +66,14 @@ class KeranjangController extends Controller
 
     public function keranjangByUser($customer_id)
     {
-        $carts = Cart::where('customer_id', $customer_id)->get();
+        $carts = Cart::join('products', 'carts.pid', '=', 'products.id')
+                    ->where('carts.customer_id', $customer_id)
+                    ->select('carts.*', 'products.price AS product_price')
+                    ->get();
 
         return response()->json($carts);
     }
+
 
 
 }
