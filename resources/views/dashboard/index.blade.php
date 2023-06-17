@@ -347,30 +347,6 @@
             </div>
         <!-- End Partner Card -->
 
-            <!-- Partner Card -->
-            <div class="col-xxl-4 col-lg-6">
-
-                <div class="card info-card customers-card">
-
-                <div class="card-body">
-                    <h5 class="card-title">Message </h5>
-
-                    <div class="d-flex align-items-center">
-                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                        <i class="bi bi-chat-left-text"></i>
-                    </div>
-                    <div class="ps-3">
-                        <h6>{{$messagecount}}</h6>
-
-                    </div>
-                    </div>
-
-                </div>
-                </div>
-
-            </div>
-        <!-- End Partner Card -->
-
           </div>
 
     </section>

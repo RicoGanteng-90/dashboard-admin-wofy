@@ -6,10 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Models\customer;
 use App\Models\product;
-use App\Models\review;
 use App\Models\order;
 use App\Models\user;
-use App\Models\message;
 use App\Models\employee;
 use App\Models\partner;
 
@@ -31,7 +29,6 @@ class DashboardController extends Controller
             'customercount' => customer::count(),
             'employeecount' => employee::count(),
             'partnercount' => partner::count(),
-            'messagecount' => message::count(),
             'cat1count' => product::where('category', 'Makeup')->count(),
             'cat2count' => product::where('category', 'Paket Wedding')->count(),
             'cat3count' => product::where('category', 'Extra Wedding')->count(),
@@ -50,7 +47,6 @@ class DashboardController extends Controller
             ->with('customercount', $data['customercount'])
             ->with('employeecount', $data['employeecount'])
             ->with('partnercount', $data['partnercount'])
-            ->with('messagecount', $data['messagecount'])
             ->with('cat1count', $data['cat1count'])
             ->with('cat2count', $data['cat2count'])
             ->with('cat3count', $data['cat3count'])
