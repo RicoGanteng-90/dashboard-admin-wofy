@@ -73,6 +73,18 @@ class KeranjangController extends Controller
 
         return response()->json($carts);
     }
+    public function deleteKeranjang($id)
+    {
+        $cart = Cart::find($id);
+
+        if (!$cart) {
+            return response()->json(['message' => 'Cart not found'], 404);
+        }
+
+        $cart->delete();
+
+        return response()->json(['message' => 'Cart deleted successfully']);
+    }
 
 
 

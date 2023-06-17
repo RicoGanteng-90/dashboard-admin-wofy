@@ -33,7 +33,7 @@ Route::post('/login', [LoginApiController::class, 'login']);
 Route::post('/register', [LoginApiController::class, 'register']);
 Route::post('/logout', [LoginApiController::class, 'logout']);
 
-//Products (Mungkin tidak semuanya terpakai/menyesuaikan)
+//Products (Mungkin t   idak semuanya terpakai/menyesuaikan)
 Route::get('/products', [ProductAPIController::class, 'index']);
 Route::post('/products-add', [ProductAPIController::class, 'store']);
 Route::get('/products/{id}', [ProductAPIController::class, 'show']);
@@ -42,7 +42,9 @@ Route::get('/products/category/{category}',[ProductAPIController::class,'getByCa
 Route::post('/keranjangtambah', [KeranjangController::class, 'tambahKeranjang']);
 Route::put('/keranjangupdate', [KeranjangController::class, 'updates']);
 Route::get('/keranjang/{customer_id}', [KeranjangController::class, 'keranjangByUser']);
-//Search
+Route::delete('/keranjang_hapus/{id}', [KeranjangController::class, 'deleteKeranjang']);
+
+//Searchda
 Route::get('/search/{name}', [SearchApiController::class, 'search']);
 
 //Orders (Mungkin tidak semuanya terpakai/menyesuaikan)
