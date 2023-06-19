@@ -52,6 +52,9 @@ Route::get('/orders', [OrderAPIController::class, 'index']);
 Route::get('/orders-show/{customer_id}', [OrderAPIController::class, 'show']);
 Route::post('/orders-add', [OrderAPIController::class, 'store']);
 Route::put('/orders-image', [OrderAPIController::class, 'update']);
+Route::post('/oderuploadtransaksi', [OrderAPIController::class, 'updateDeleteOrder']);
+
+
 Route::delete('/orders-delete/{id}', [OrderAPIController::class, 'destroy']);
 
 

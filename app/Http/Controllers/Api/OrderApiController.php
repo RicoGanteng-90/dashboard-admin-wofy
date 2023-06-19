@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 
 class OrderAPIController extends Controller
 {
@@ -37,6 +38,32 @@ class OrderAPIController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+    public function updateDeleteOrder(Request $request)
+{
+    $data = $request->validate([
+        'id' => 'required|integer',
+        'id_cust' => 'required|integer',
+        'file' => 'required|image',
+    ]);
+
+    $file = $request->file('file');
+    $fileName = $file->getClientOriginalName();
+    $request->file('file')->move('bukti/', $request->file('file')->getClientOriginalName());
+    // Simpan gambar dengan nama file yang ditentukan
+    //$filePath = $file->storeAs('bukti', $fileName);
+
+    $order = Order::findOrFail($data['id']);
+    $order->customer_id = $data['id_cust'];
+
+    $order->proof_payment = $fileName;
+
+    $order->save();
+
+    return response()->json(['message' => 'Order updated or deleted successfully'], 200);
+}
+
+
+
     public function store(Request $request)
     {
         $validatedData = $request->validate([
