@@ -38,6 +38,7 @@ Route::get('/products', [ProductAPIController::class, 'index']);
 Route::post('/products-add', [ProductAPIController::class, 'store']);
 Route::get('/products/{id}', [ProductAPIController::class, 'show']);
 Route::get('/products/category/{category}',[ProductAPIController::class,'getByCategory']);
+Route::get('/products/search/{name}',[ProductAPIController::class,'getProdukByName']);
 
 Route::post('/keranjangtambah', [KeranjangController::class, 'tambahKeranjang']);
 Route::put('/keranjangupdate', [KeranjangController::class, 'updates']);

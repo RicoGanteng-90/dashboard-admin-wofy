@@ -51,10 +51,18 @@ class ProductAPIController extends Controller
         return response()->json($products);
     }
 
-    public function getAllProducts()
-{
+    public function getProdukByName($name)
+    {
+        $products = Product::where('name', 'like', '%' . $name . '%')->get();
 
-}
+        if ($products->isEmpty()) {
+            return response()->json(['message' => 'Tidak ada produk dengan nama ini.']);
+        }
+
+        return response()->json($products);
+    }
+
+
 
     public function store(Request $request)
     {
