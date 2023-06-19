@@ -78,7 +78,7 @@
                     <td>{{$ord->event_time}}</td>
 
                     <td>{{$ord->order_status}}</td>
-                    <td><a href="{{ route('image.download', ['proof_payment' => $ord->proof_payment]) }}"><img src="{{ asset('bukti/' . $ord->proof_payment) }}" alt="Bukti belum ada"></a>
+                    <td><a href="{{ route('image.download', ['proof_payment' => $ord->proof_payment]) }}"><img src="{{ asset('bukti/' . $ord->proof_payment) }}" alt="Bukti belum ada" width="90px" height="80px"></a>
                     <td>{{$ord->payment_status}}</td>
                   <td>
                     <a href="{{ url('order-show/'.$ord->id) }}" class="btn btn-info rounded-pill" data-bs-toggle="modal" data-bs-target="#orderUpdate{{$ord->id}}"><i class="bi bi-pencil"></i> Update</button>
