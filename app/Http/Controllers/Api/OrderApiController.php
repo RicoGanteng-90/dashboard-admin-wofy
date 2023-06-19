@@ -119,15 +119,15 @@ class OrderAPIController extends Controller
 
         $order = order::findOrFail($id);
 
-        if ($request->hasFile('image')) {
-            $myFile = 'images/'.$order->image;
+        if ($request->hasFile('proof_payment')) {
+            $myFile = 'bukti/'.$order->proof_payment;
             if(File::exists($myFile))
             {
                 File::delete($myFile);
             }
 
-            $request->file('image')->move('images/', $request->file('image')->getClientOriginalName());
-            $order->image=$request->file('image')->getClientOriginalName();
+            $request->file('proof_payment')->move('bukti/', $request->file('proof_payment')->getClientOriginalName());
+            $order->image=$request->file('proof_payment')->getClientOriginalName();
     }}
 
     /**
