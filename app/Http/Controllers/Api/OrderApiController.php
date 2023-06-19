@@ -91,11 +91,14 @@ class OrderAPIController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($customer_id)
-    {
-        $order = order::where('customer_id', $customer_id)->get();
+{
+    $order = Order::where('customer_id', $customer_id)
+                  ->orderBy('created_at', 'asc')
+                  ->get();
 
-        return response()->json($order);
-    }
+    return response()->json($order);
+}
+
 
     /**
      * Show the form for editing the specified resource.
