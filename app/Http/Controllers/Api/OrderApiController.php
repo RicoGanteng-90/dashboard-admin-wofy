@@ -92,7 +92,7 @@ class OrderAPIController extends Controller
     public function show($customer_id)
 {
     $order = Order::where('customer_id', $customer_id)
-                  ->orderBy('created_at', 'asc')
+                  ->orderBy('order_time', 'desc')
                   ->get();
 
     return response()->json($order);
