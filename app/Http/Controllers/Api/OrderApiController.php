@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 
-class OrderAPIController extends Controller
+class OrderApiController extends Controller
 {
     /**
      * Display a listing of the resource.
