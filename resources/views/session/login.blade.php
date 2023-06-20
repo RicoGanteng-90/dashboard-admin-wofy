@@ -14,7 +14,7 @@
               <div class="d-flex justify-content-center py-4">
                 <a href="/home" class="logo d-flex align-items-center w-auto">
                   <img src="assets/img/logofanny.png" alt="">
-                  <span class="d-none d-lg-block">WofyMif</span>
+                  <span class="d-none d-lg-block">Wofy</span>
                 </a>
               </div><!-- End Logo -->
 
