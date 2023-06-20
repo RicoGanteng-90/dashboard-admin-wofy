@@ -77,6 +77,7 @@ class OrderAPIController extends Controller
             'total_price' => 'required',
             'order_time' => 'required',
             'event_time' => 'required',
+            'proof_payment'=> 'required'
         ]);
 
         $order = Order::create($validatedData);
