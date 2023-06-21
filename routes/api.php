@@ -48,11 +48,11 @@ Route::delete('/keranjang_hapus/{id}', [KeranjangController::class, 'deleteKeran
 Route::get('/search/{name}', [SearchApiController::class, 'search']);
 
 //Orders (Mungkin tidak semuanya terpakai/menyesuaikan)
-Route::get('/orders', [OrderAPIController::class, 'index']);
-Route::get('/orders-show/{customer_id}', [OrderAPIController::class, 'show']);
-Route::post('/orders-add', [OrderAPIController::class, 'store']);
-Route::put('/orders-image', [OrderAPIController::class, 'update']);
-Route::post('/oderuploadtransaksi', [OrderAPIController::class, 'updateDeleteOrder']);
+Route::get('/orders', [OrderApiController::class, 'index']);
+Route::get('/orders-show/{customer_id}', [OrderApiController::class, 'show']);
+Route::post('/orders-add', [OrderApiController::class, 'store']);
+Route::put('/orders-image', [OrderApiController::class, 'update']);
+Route::post('/oderuploadtransaksi', [OrderApiController::class, 'updateDeleteOrder']);
 
 
 Route::delete('/orders-delete/{id}', [OrderApiController::class, 'destroy']);

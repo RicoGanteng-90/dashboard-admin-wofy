@@ -47,7 +47,6 @@
               <table class="table datatable">
                 <thead>
                   <tr>
-                    <th scope="col">#</th>
                     <th scope="col">Name</th>
                     <th scope="col">Phone</th>
                     <th scope="col">Email</th>
@@ -66,7 +65,6 @@
                     @foreach($order as $ord)
 
                   <tr>
-                    <th scope="row">{{$ord->id}}</th>
                     <td>{{$ord->name}}</td>
                     <td>{{$ord->number}}</td>
                     <td>{{$ord->email}}</td>
