@@ -78,7 +78,6 @@
                         <table class="table datatable">
                             <thead>
                             <tr>
-                                <th scope="col">#</th>
                                 <th scope="col">Name</th>
                                 <th scope="col">Email</th>
                                 <th scope="col">Phone</th>
@@ -90,7 +89,6 @@
                             <tbody>
                                 @foreach($employee as $emp)
                             <tr>
-                                <th scope="row">{{$emp->id}}</th>
                                 <td>{{$emp->name}}</td>
                                 <td>{{$emp->email}}</td>
                                 <td>{{$emp->number}}</td>

@@ -21,17 +21,9 @@ class EmployeeController extends Controller
         'phone' => 'nullable|string|max:500',
         'position' => 'nullable|string|max:500',
         'address' => 'nullable|string|max:500',
-    ], [
-        'email.unique' => 'Email sudah digunakan oleh karyawan lain.',
     ]);
 
     if ($validatedData){
-
-        $existingEmployee = Employee::where('email', $request->email)->first();
-
-        if ($existingEmployee) {
-            return back()->with('warning', 'Email already exists.');
-        }
 
         $employee = new employee();
         $employee->name=$request->name;

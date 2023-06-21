@@ -80,7 +80,6 @@
                         <table class="table datatable">
                             <thead>
                             <tr>
-                                <th scope="col">#</th>
                                 <th scope="col">Name</th>
                                 <th scope="col">Email</th>
                                 <th scope="col">Phone</th>
@@ -92,7 +91,6 @@
                             <tbody>
                                 @foreach($partner as $part)
                             <tr>
-                                <th scope="row">{{$part->id}}</th>
                                 <td>{{$part->name}}</td>
                                 <td>{{$part->email}}</td>
                                 <td>{{$part->number}}</td>
