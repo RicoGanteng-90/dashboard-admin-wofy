@@ -30,9 +30,17 @@
                             <div style="text-align: center" class="alert alert-success">{{session('success')}}</div>
                         @endif
 
-                        @error('error')
-                            <div style="text-align: center" class="alert alert-danger">{{session('error')}}</div>
-                        @enderror
+                        @if(session('warning'))
+                            <div style="text-align: center" class="alert alert-danger">{{session('warning')}}</div>
+                        @endif
+
+                        @if ($errors->any())
+                            <div style="text-align: center" class="alert alert-danger">
+                                    @foreach ($errors->all() as $error)
+                                        {{ $error }}
+                                    @endforeach
+                            </div>
+                        @endif
                     </b>
 
                         <!-- Vertical Form -->

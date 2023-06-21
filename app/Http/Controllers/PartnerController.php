@@ -16,6 +16,12 @@ class PartnerController extends Controller
 
     public function store(Request $request)
     {
+        $validatedData = $request->validate([
+            'email' => 'required|email|unique:partners,email',
+        ], [
+            'email.unique' => 'Email sudah digunakan oleh partner lain.',
+        ]);
+
         $part=partner::create($request->all());
 
         $part->save();
