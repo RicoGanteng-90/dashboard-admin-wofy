@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('carts', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->integer('price');
-            $table->integer('quantity');
+            $table->string('price');
+            $table->string('quantity');
             $table->string('image');
             $table->timestamps();
         });
