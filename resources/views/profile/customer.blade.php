@@ -35,7 +35,6 @@
 <table class="table datatable">
     <thead>
       <tr>
-        <th scope="col">#</th>
         <th scope="col">Name</th>
         <th scope="col">Email</th>
         <th scope="col">Number</th>
@@ -48,7 +47,6 @@
     @foreach($customer as $cust)
 
       <tr>
-        <th scope="row">{{$cust->id}}</th>
         <td>{{$cust->name}}</td>
         <td>{{$cust->email}}</td>
         <td>{{$cust->number}}</td>
