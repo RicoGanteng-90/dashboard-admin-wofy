@@ -7,7 +7,7 @@ use App\Models\customer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
-class CustomerAPIController extends Controller
+class CustomerApiController extends Controller
 {
     /**
      * Display a listing of the resource.
