@@ -97,7 +97,7 @@
 
                         <div class="d-flex justify-content-between">
                             <a href="{{ url('product-show/'.$prod->id) }}" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#updateProduct{{ $prod->id }}"><i class="bi bi-pencil-square"></i> Update</a>
-                                <button type="submit" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#basicModal"><i class="bi bi-trash"></i> Delete</button>
+                                <button type="submit" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#basicModal{{$prod->id}}"><i class="bi bi-trash"></i> Delete</button>
 
                                 <!-- Update modal start -->
                                 <div class="modal fade" id="updateProduct{{$prod->id}}" tabindex="-1">
@@ -149,7 +149,7 @@
                                     </div>
                                 </div><!-- End Scrolling Modal-->
 
-                            <div class="modal fade" id="basicModal" tabindex="-1">
+                            <div class="modal fade" id="basicModal{{$prod->id}}" tabindex="-1">
                                 <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">
