@@ -18,7 +18,7 @@ class ImageController extends Controller
             $newFileName = 'buktiPembayaran.'.$extension; // Nama baru yang diinginkan untuk file yang diunduh
             return response()->download($filePath, $newFileName);
         }
-        return back()->with('info', 'Gambar belum ada.');
+        return back()->with('info', 'Bukti belum ada.');
 }
 
 }
