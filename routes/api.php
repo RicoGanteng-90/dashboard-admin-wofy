@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\LoginApiController;
 use App\Http\Controllers\Api\OrderApiController;
 use App\Http\Controllers\Api\ProductApiController;
-use App\Http\Controllers\Api\CustomerApiController;
+use App\Http\Controllers\Api\Customer2Controller;
 use App\Http\Controllers\Api\SearchApiController;
 use App\Http\Controllers\Api\CartController;
 
@@ -59,10 +59,10 @@ Route::delete('/orders-delete/{id}', [OrderApiController::class, 'destroy']);
 
 
 //customer account (Mungkin tidak semuanya terpakai/menyesuaikan)
-Route::get('/customer_accounts', [CustomerApiController::class, 'index']);
-Route::get('/customer_accounts/{id}', [CustomerApiController::class, 'show']);
-Route::put('/customer_accounts-update/{id}', [CustomerApiController::class, 'update']);
-Route::delete('/customer_accounts/{id}', [CustomerApiController::class, 'destroy']);
+Route::get('/customer_accounts', [Customer2Controller::class, 'index']);
+Route::get('/customer_accounts/{id}', [Customer2Controller::class, 'show']);
+Route::put('/customer_accounts-update/{id}', [Customer2Controller::class, 'update']);
+Route::delete('/customer_accounts/{id}', [Customer2Controller::class, 'destroy']);
 
 //cart (Mungkin tidak semuanya terpakai/menyesuaikan)
 Route::post('/cart-add', [CartController::class, 'store']);
