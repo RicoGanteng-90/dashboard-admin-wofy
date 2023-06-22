@@ -17,31 +17,35 @@ class LoginApiController extends Controller
      */
     public function login(Request $request)
     {
-    $credentials = $request->only('email', 'password');
+        $credentials = $request->only('email', 'password');
 
-    $customer = Customer::where('email', $credentials['email'])->first();
+        $customer = Customer::where('email', $credentials['email'])->first();
 
-    if ($customer && Hash::check($credentials['password'], $customer->password)) {
-        // Login berhasil
-        $data = [
-            'message' => 'Successful',
-            'username' => $customer->name,
-            'email' => $customer->email,
-            'phone_number' => $customer->number,
-            'idakun' => strval($customer->id)
-        ];
-        return response()->json($data);
-    } else {
-        // Login gagal
-        return response()->json(  $data = [
-            'message' => 'Successful',
-            'username' => $customer->name,
-            'email' => $customer->email,
-            'phone_number' => $customer->number,
-            'idakun' => strval('0')
-        ]);
+        if ($customer && Hash::check($credentials['password'], $customer->password)) {
+            // Login berhasil
+            $data = [
+                'message' => 'Successful',
+                'username' => $customer->name,
+                'email' => $customer->email,
+                'phone_number' => $customer->number,
+                'idakun' => strval($customer->id),
+                'address' => $customer->address
+            ];
+            return response()->json($data);
+        } else {
+            // Login gagal
+            return response()->json([
+                'message' => 'Successful',
+                'username' => '',
+                'email' => '',
+                'phone_number' => '',
+                'idakun' => strval('0'),
+                'address' => ''
+            ]);
+        }
     }
-    }
+
+
     public function register(Request $request)
     {
         $customer=customer::create($request->all());
