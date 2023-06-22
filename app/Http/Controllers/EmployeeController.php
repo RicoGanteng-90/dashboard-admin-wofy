@@ -13,16 +13,18 @@ class EmployeeController extends Controller
         return view('people.employee', compact('employee'));
     }
 
-    public function store(Request $request)
-    {   $validatedData = $request->validate([
-        'name' => 'string|max:500',
-        'email' => 'email|unique|max:500',
-        'phone' => 'string|max:500',
-        'position' => 'string|max:500',
-        'address' => 'string|max:500',
+    public function store(Request $request) {
+
+        $validatedData = $request->validate([
+        'name' => 'nullable|string|max:500',
+        'email' => 'nullable|email|unique:employees,email|max:500',
+        'phone' => 'nullable|string|max:500',
+        'position' => 'nullable|string|max:500',
+        'address' => 'nullable|string|max:500',
     ]);
 
     if ($validatedData){
+
         $employee = new employee();
         $employee->name=$request->name;
         $employee->email=$request->email;
@@ -33,7 +35,7 @@ class EmployeeController extends Controller
 
         return back()->with('success', 'Account Added.');
     }else{
-        return back()->withErrors(['error'=>'There is a problem.']);
+        return back()->with('warning', 'There is a problem.');
     }
 }
 

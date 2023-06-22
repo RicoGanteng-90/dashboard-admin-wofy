@@ -55,7 +55,7 @@
                 <tbody>
                     @foreach($order as $ord)
                   <tr>
-                    <th scope="row">{{$ord->id}}<input type="checkbox" name="order[]" value="{{$ord->id}}"></th>
+                    <th scope="row"><input type="checkbox" name="order[]" value="{{$ord->id}}"></th>
                     <td>{{$ord->name}}</td>
                     <td>{{$ord->number}}</td>
                     <td>{{$ord->email}}</td>

@@ -33,6 +33,14 @@
                         @error('error')
                             <div style="text-align: center" class="alert alert-danger">{{session('error')}}</div>
                         @enderror
+
+                        @if ($errors->any())
+                            <div style="text-align: center" class="alert alert-danger">
+                                    @foreach ($errors->all() as $error)
+                                        {{ $error }}
+                                    @endforeach
+                            </div>
+                        @endif
                     </b>
 
                         <!-- Vertical Form -->
@@ -72,7 +80,6 @@
                         <table class="table datatable">
                             <thead>
                             <tr>
-                                <th scope="col">#</th>
                                 <th scope="col">Name</th>
                                 <th scope="col">Email</th>
                                 <th scope="col">Phone</th>
@@ -84,7 +91,6 @@
                             <tbody>
                                 @foreach($partner as $part)
                             <tr>
-                                <th scope="row">{{$part->id}}</th>
                                 <td>{{$part->name}}</td>
                                 <td>{{$part->email}}</td>
                                 <td>{{$part->number}}</td>

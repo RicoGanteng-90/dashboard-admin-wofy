@@ -30,7 +30,7 @@
             <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
 
               <img src="{{asset('profile/'.Auth::user()->profile_img)}}" alt="{{asset('profile/blank.png')}}" onerror="this.onerror=null; this.src='{{ asset('profile/blank.png') }}'" class="rounded-circle">
-              <h2>{{Auth::user()->name}}</h2>
+              <h2 style="text-align: center">{{Auth::user()->name}}</h2><br>
               <h3>{{Auth::user()->job}}</h3>
               <div class="social-links mt-2">
               </div>

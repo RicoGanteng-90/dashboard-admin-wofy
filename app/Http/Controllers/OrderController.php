@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class OrderController extends Controller
 {
     public function index() {
-        $order = order::all();
+        $order = order::orderByDesc('created_at')->get();
 
         return view('order.order-data', compact('order'));
     }
@@ -32,31 +32,6 @@ class OrderController extends Controller
     $order = Order::create($validatedData);
     return response()->json(['message' => 'Order berhasil ditambahkan.', 'order' => $order]);
 }
-public function updateDeleteOrder(Request $request)
-    {
-        $data = $request->validate([
-            'id' => 'required|integer',
-            'id_cust' => 'required|integer',
-            'file' => 'required|image',
-        ]);
-
-        // Simpan file gambar yang diunggah
-        $file = $request->file('file');
-        $fileName = $file->getClientOriginalName();
-        $filePath = $file->storeAs('public/bukti', $fileName);
-
-        // Update atau hapus order
-        $order = Order::findOrFail($data['id']);
-        $order->customer_id = $data['id_cust'];
-        // Update field lainnya sesuai kebutuhan
-        // ...
-        $order->proof_payment = $fileName;
-        // ...
-
-        $order->save();
-
-        return response()->json(['message' => 'Order updated or deleted successfully'], 200);
-    }
 
     public function update(Request $request, $id)
 {
@@ -129,7 +104,7 @@ public function updateDeleteOrder(Request $request)
     }
 
     public function show() {
-        $order = order::all();
+        $order = order::orderByDesc('created_at')->get();
 
         return view('order.order-update', compact('order'));
     }
