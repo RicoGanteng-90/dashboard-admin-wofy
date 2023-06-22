@@ -11,12 +11,12 @@ class KeranjangController extends Controller
     function tambahkeranjang(Request $request){
 
         $validatedData = $request->validate([
-            'customer_id' => 'integer',
-            'pid' => 'integer',
+            'customer_id' => 'required',
+            'pid' => 'required',
             'name' => 'required|max:100',
-            'price' => 'required|integer',
-            'quantity' => 'required|integer',
-            'image' => 'required|string',
+            'price' => 'required',
+            'quantity' => 'required',
+            'image' => 'required',
         ]);
 
         $cart = cart::create($validatedData);
@@ -26,6 +26,7 @@ class KeranjangController extends Controller
 
     public function updates(Request $request)
     {
+
         $validatedData = $request->validate([
             'id' => 'required',
             'customer_id' => 'required',
@@ -50,7 +51,7 @@ class KeranjangController extends Controller
 
         // Jika keranjang tidak ditemukan, kembalikan respons error
         if (!$cart) {
-            return response()->json(['message' => 'Cart not found'], 404);
+            return response()->json(['message' => $request], 404);
         }
 
         // Update data keranjang
